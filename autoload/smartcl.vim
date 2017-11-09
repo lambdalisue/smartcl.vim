@@ -1,8 +1,10 @@
 function! smartcl#enable() abort
-  call s:enter()
+  silent! unlet! b:smartcl
+  call timer_start(0, function('s:enter'))
 endfunction
 
 function! smartcl#disable() abort
+  silent! unlet! b:smartcl
   setlocal nocursorline
   augroup smartcl
     autocmd!
