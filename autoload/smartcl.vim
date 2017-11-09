@@ -10,6 +10,9 @@ function! smartcl#disable() abort
 endfunction
 
 function! s:enter(...) abort
+  if get(b:, 'smartcl')
+    return
+  endif
   setlocal cursorline
   augroup smartcl
     autocmd!
@@ -22,6 +25,9 @@ endfunction
 " 'WinEnter' when the line has changed.
 " http://thinca.hatenablog.com/entry/20090530/1243615055
 function! s:leave() abort
+  if get(b:, 'smartcl')
+    return
+  endif
   setlocal nocursorline
   augroup smartcl
     autocmd!
